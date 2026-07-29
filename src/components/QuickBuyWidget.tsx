@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { buckets } from "@/lib/buckets";
 import { bucketDisplay } from "@/lib/bucketDisplay";
 import { HoldingsTicker } from "@/components/HoldingsTicker";
+import { WalletConnectFlow } from "@/components/WalletConnectFlow";
 
 export function QuickBuyWidget() {
-  const router = useRouter();
+  const [step, setStep] = useState<"form" | "wallet">("form");
   const [amount, setAmount] = useState("1000");
   const [selectedSlug, setSelectedSlug] = useState(buckets[0].slug);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -17,8 +17,18 @@ export function QuickBuyWidget() {
   const numericAmount = parseFloat(amount) || 0;
   const estimatedUnits = numericAmount / selectedMeta.price;
 
-  function handleContinue() {
-    router.push(`/explore/${selectedSlug}?amount=${encodeURIComponent(amount)}`);
+  if (step === "wallet") {
+    return (
+      <div className="relative w-full max-w-md mx-auto glass-card rounded-[2rem] p-4 shadow-2xl border-white/50">
+        <WalletConnectFlow
+          bucket={selectedBucket}
+          meta={selectedMeta}
+          amount={numericAmount}
+          estimatedUnits={estimatedUnits}
+          onBack={() => setStep("form")}
+        />
+      </div>
+    );
   }
 
   return (
@@ -147,7 +157,7 @@ export function QuickBuyWidget() {
 
       <button
         type="button"
-        onClick={handleContinue}
+        onClick={() => setStep("wallet")}
         disabled={numericAmount <= 0}
         className="accent-button disabled:opacity-40 disabled:cursor-not-allowed w-full mt-4 py-4 rounded-full text-primary font-extrabold text-lg flex items-center justify-center gap-2"
       >
