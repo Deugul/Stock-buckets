@@ -33,7 +33,7 @@ export function Hero() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-start">
             <Link
-              href="/explore"
+              href="/buy"
               className="accent-button text-primary px-10 py-4 rounded-full text-body-md font-extrabold flex items-center gap-2"
             >
               Connect wallet

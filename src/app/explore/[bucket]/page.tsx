@@ -30,10 +30,13 @@ function rebalanceCadence(indexRules: string | null): string {
 
 export default async function BucketDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ bucket: string }>;
+  searchParams: Promise<{ amount?: string }>;
 }) {
   const { bucket: slug } = await params;
+  const { amount } = await searchParams;
   const bucket = getBucket(slug);
   if (!bucket) notFound();
 
@@ -131,7 +134,11 @@ export default async function BucketDetailPage({
         </div>
 
         <aside className="lg:col-span-4 sticky top-24">
-          <InvestPanel price={meta.price} verified={verified} />
+          <InvestPanel
+            price={meta.price}
+            verified={verified}
+            initialAmount={amount && Number(amount) > 0 ? amount : undefined}
+          />
         </aside>
       </div>
     </div>

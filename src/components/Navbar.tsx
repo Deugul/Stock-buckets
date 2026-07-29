@@ -24,7 +24,7 @@ export function Navbar() {
         </div>
         <div className="flex items-center gap-4">
           <Link
-            href="/explore"
+            href="/buy"
             className="bg-white border border-outline-variant px-6 py-2.5 rounded-full text-body-md font-bold flex items-center gap-2 hover:bg-surface transition-all"
           >
             <span className="w-2.5 h-2.5 bg-accent rounded-full animate-pulse" />

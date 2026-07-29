@@ -5,11 +5,13 @@ import { useState } from "react";
 export function InvestPanel({
   price,
   verified,
+  initialAmount = "1000",
 }: {
   price: number;
   verified: boolean;
+  initialAmount?: string;
 }) {
-  const [amount, setAmount] = useState("1000");
+  const [amount, setAmount] = useState(initialAmount);
   const [autoInvest, setAutoInvest] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
 
