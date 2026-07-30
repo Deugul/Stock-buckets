@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/Logo";
 import { useWallet } from "@/lib/wallet-context";
 
@@ -15,6 +15,24 @@ const wallets = [
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const wallet = useWallet();
+  const { dropdownOpen, closeDropdown } = wallet;
+  const walletMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!dropdownOpen) return;
+
+    function handlePointerDown(event: PointerEvent) {
+      if (
+        walletMenuRef.current &&
+        !walletMenuRef.current.contains(event.target as Node)
+      ) {
+        closeDropdown();
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [dropdownOpen, closeDropdown]);
 
   return (
     <header className="w-full top-0 sticky bg-white/80 backdrop-blur-md z-50">
@@ -30,7 +48,7 @@ export function Navbar() {
           </div>
         </div>
         <div className="flex items-center gap-2 sm:gap-4">
-          <div className="relative">
+          <div className="relative" ref={walletMenuRef}>
             <button
               type="button"
               onClick={() =>
@@ -54,13 +72,6 @@ export function Navbar() {
             </button>
 
             {wallet.dropdownOpen && (
-              <>
-                <button
-                  type="button"
-                  aria-label="Close wallet menu"
-                  onClick={wallet.closeDropdown}
-                  className="fixed inset-0 z-40"
-                />
                 <div className="absolute right-0 top-full mt-2 z-50 w-72 bg-white rounded-2xl border border-outline-variant shadow-xl p-4">
                   {wallet.connecting ? (
                     <div className="flex flex-col items-center justify-center gap-3 py-6">
@@ -100,7 +111,6 @@ export function Navbar() {
                     </div>
                   )}
                 </div>
-              </>
             )}
           </div>
           <button
