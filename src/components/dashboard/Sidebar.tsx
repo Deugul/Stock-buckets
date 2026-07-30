@@ -11,12 +11,28 @@ const navItems = [
   { label: "Settings", icon: "settings", href: "#" },
 ];
 
-export function Sidebar() {
+export function Sidebar({
+  onNavigate,
+  onClose,
+}: {
+  onNavigate?: () => void;
+  onClose?: () => void;
+} = {}) {
   return (
-    <aside className="w-64 border-r border-outline-variant bg-white flex flex-col fixed h-full z-50">
+    <aside className="w-64 border-r border-outline-variant bg-white flex flex-col h-full lg:fixed lg:z-50">
       <div className="p-6">
-        <div className="mb-8">
+        <div className="mb-8 flex items-center justify-between">
           <Logo textClassName="text-xl font-bold" />
+          {onClose && (
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close menu"
+              className="lg:hidden p-1 -mr-1 rounded-full hover:bg-surface-container-low transition-colors"
+            >
+              <span className="material-symbols-outlined">close</span>
+            </button>
+          )}
         </div>
         <nav className="space-y-1">
           {navItems.map((item) => {
@@ -25,6 +41,7 @@ export function Sidebar() {
               <Link
                 key={item.label}
                 href={item.href}
+                onClick={onNavigate}
                 className={
                   isActive
                     ? "flex items-center gap-3 px-4 py-2.5 rounded-lg font-bold transition-colors bg-lime-accent text-black"

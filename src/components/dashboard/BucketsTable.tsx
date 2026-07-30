@@ -6,7 +6,8 @@ import { riskLabel, riskBadgeClass } from "@/lib/bucketRisk";
 export function BucketsTable() {
   return (
     <div className="bg-white rounded-xl border border-outline-variant overflow-hidden shadow-sm">
-      <table className="w-full text-left border-collapse">
+      <div className="overflow-x-auto">
+      <table className="w-full text-left border-collapse min-w-[720px]">
         <thead className="bg-surface-container-low border-b border-outline-variant">
           <tr>
             <th className="px-6 py-4 text-xs font-bold text-on-surface-variant uppercase tracking-wider">
@@ -110,6 +111,7 @@ export function BucketsTable() {
           })}
         </tbody>
       </table>
+      </div>
       <div className="px-6 py-4 bg-surface-container-lowest border-t border-outline-variant flex items-center justify-between">
         <p className="text-xs text-on-surface-variant font-medium">
           Showing {buckets.length} of {buckets.length} investment pools

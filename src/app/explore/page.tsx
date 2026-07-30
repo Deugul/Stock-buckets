@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function ExplorePage() {
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-8">
       <div className="mb-8">
         <h1 className="text-headline-md font-bold mb-2">Explore Buckets</h1>
         <p className="text-on-surface-variant">

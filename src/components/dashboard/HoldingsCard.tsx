@@ -8,7 +8,7 @@ function badgeText(h: Holding): string {
 
 export function HoldingsCard({ holdings }: { holdings: Holding[] }) {
   return (
-    <div className="bg-white rounded-2xl p-8 border border-outline-variant shadow-sm">
+    <div className="bg-white rounded-2xl p-5 sm:p-8 border border-outline-variant shadow-sm">
       <div className="flex justify-between items-center mb-8">
         <h3 className="text-headline-md font-bold">Holdings</h3>
         <span className="text-xs text-on-surface-variant">

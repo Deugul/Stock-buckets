@@ -104,33 +104,6 @@
   }
 }
 
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.reveal {
-  transition:
-    opacity 1s,
-    transform 1s;
-  opacity: 0;
-  transform: translateY(2.5rem);
-}
-
-.reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 @keyframes marquee {
   from {
     transform: translateX(0);

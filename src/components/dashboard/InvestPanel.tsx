@@ -5,13 +5,11 @@ import { useState } from "react";
 export function InvestPanel({
   price,
   verified,
-  initialAmount = "1000",
 }: {
   price: number;
   verified: boolean;
-  initialAmount?: string;
 }) {
-  const [amount, setAmount] = useState(initialAmount);
+  const [amount, setAmount] = useState("1000");
   const [autoInvest, setAutoInvest] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -19,7 +17,7 @@ export function InvestPanel({
   const estimatedShares = (numericAmount / price).toFixed(2);
 
   return (
-    <div className="bg-black text-white rounded-2xl p-8 shadow-xl overflow-hidden relative border border-white/10">
+    <div className="bg-black text-white rounded-2xl p-5 sm:p-8 shadow-xl overflow-hidden relative border border-white/10">
       <div className="absolute top-0 right-0 w-32 h-32 bg-lime-accent/20 blur-3xl -mr-16 -mt-16 rounded-full" />
       <h3 className="text-headline-md font-bold mb-8 relative z-10">
         Invest Now

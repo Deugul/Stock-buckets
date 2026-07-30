@@ -30,13 +30,10 @@ function rebalanceCadence(indexRules: string | null): string {
 
 export default async function BucketDetailPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ bucket: string }>;
-  searchParams: Promise<{ amount?: string }>;
 }) {
   const { bucket: slug } = await params;
-  const { amount } = await searchParams;
   const bucket = getBucket(slug);
   if (!bucket) notFound();
 
@@ -44,7 +41,7 @@ export default async function BucketDetailPage({
   const verified = isBucketFullyVerified(bucket);
 
   return (
-    <div className="p-8 max-w-[1200px] mx-auto">
+    <div className="p-4 sm:p-8 max-w-[1200px] mx-auto">
       <div className="flex items-center gap-2 text-on-surface-variant mb-6 text-sm">
         <Link href="/explore" className="hover:text-on-surface">
           Explore
@@ -134,11 +131,7 @@ export default async function BucketDetailPage({
         </div>
 
         <aside className="lg:col-span-4 sticky top-24">
-          <InvestPanel
-            price={meta.price}
-            verified={verified}
-            initialAmount={amount && Number(amount) > 0 ? amount : undefined}
-          />
+          <InvestPanel price={meta.price} verified={verified} />
         </aside>
       </div>
     </div>

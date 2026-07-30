@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
+import { WalletProvider } from "@/lib/wallet-context";
 import "./globals.css";
 
 const hankenGrotesk = Hanken_Grotesk({
@@ -38,7 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-on-surface overflow-x-hidden">
-        {children}
+        <WalletProvider>{children}</WalletProvider>
       </body>
     </html>
   );

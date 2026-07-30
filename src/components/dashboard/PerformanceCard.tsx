@@ -12,8 +12,8 @@ export function PerformanceCard({ chartPath }: { chartPath: string }) {
   const areaPath = `${chartPath} L 800,200 L 0,200 Z`;
 
   return (
-    <div className="bg-white rounded-2xl p-8 border border-outline-variant shadow-sm">
-      <div className="flex justify-between items-center mb-8">
+    <div className="bg-white rounded-2xl p-5 sm:p-8 border border-outline-variant shadow-sm">
+      <div className="flex flex-wrap justify-between items-center gap-3 mb-8">
         <h3 className="text-headline-md font-bold">Performance</h3>
         <div className="flex bg-surface rounded-full p-1 border border-outline-variant">
           {ranges.map((r) => (
@@ -23,8 +23,8 @@ export function PerformanceCard({ chartPath }: { chartPath: string }) {
               onClick={() => setRange(r)}
               className={
                 r === range
-                  ? "px-5 py-1.5 text-label-sm font-label font-bold rounded-full bg-lime-accent text-black"
-                  : "px-5 py-1.5 text-label-sm font-label text-on-surface-variant hover:text-on-surface transition-colors"
+                  ? "px-3.5 sm:px-5 py-1.5 text-label-sm font-label font-bold rounded-full bg-lime-accent text-black"
+                  : "px-3.5 sm:px-5 py-1.5 text-label-sm font-label text-on-surface-variant hover:text-on-surface transition-colors"
               }
             >
               {r}

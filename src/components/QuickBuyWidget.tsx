@@ -5,9 +5,14 @@ import { buckets } from "@/lib/buckets";
 import { bucketDisplay } from "@/lib/bucketDisplay";
 import { HoldingsTicker } from "@/components/HoldingsTicker";
 import { WalletConnectFlow } from "@/components/WalletConnectFlow";
+import { UsdcIcon } from "@/components/UsdcIcon";
+import { useWallet } from "@/lib/wallet-context";
+
+const MOCK_USDC_BALANCE = 4820.75;
 
 export function QuickBuyWidget() {
-  const [step, setStep] = useState<"form" | "wallet">("form");
+  const wallet = useWallet();
+  const [checkoutStarted, setCheckoutStarted] = useState(false);
   const [amount, setAmount] = useState("1000");
   const [selectedSlug, setSelectedSlug] = useState(buckets[0].slug);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -17,7 +22,14 @@ export function QuickBuyWidget() {
   const numericAmount = parseFloat(amount) || 0;
   const estimatedUnits = numericAmount / selectedMeta.price;
 
-  if (step === "wallet") {
+  function handleBuyClick() {
+    setCheckoutStarted(true);
+    if (!wallet.connected) {
+      wallet.openDropdown();
+    }
+  }
+
+  if (checkoutStarted && wallet.connected) {
     return (
       <div className="relative w-full max-w-md mx-auto glass-card rounded-[2rem] p-4 shadow-2xl border-white/50">
         <WalletConnectFlow
@@ -25,7 +37,7 @@ export function QuickBuyWidget() {
           meta={selectedMeta}
           amount={numericAmount}
           estimatedUnits={estimatedUnits}
-          onBack={() => setStep("form")}
+          onBack={() => setCheckoutStarted(false)}
         />
       </div>
     );
@@ -40,11 +52,16 @@ export function QuickBuyWidget() {
             <span className="material-symbols-outlined text-[16px]">
               account_balance_wallet
             </span>
-            Enter USDC value
+            {wallet.connected
+              ? `Balance: ${MOCK_USDC_BALANCE.toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })} USDC`
+              : "Enter USDC value"}
           </span>
         </div>
-        <div className="flex items-center justify-between">
-          <span className="text-3xl font-bold text-on-surface">$</span>
+        <div className="flex items-center justify-between gap-3">
+          <UsdcIcon className="w-9 h-9 shrink-0" />
           <input
             type="number"
             min="0"
@@ -57,7 +74,8 @@ export function QuickBuyWidget() {
       </div>
 
       <div className="flex justify-center -my-3 relative z-10">
-        <div className="w-10 h-10 rounded-full bg-accent/30 flex items-center justify-center border-4 border-white">
+        <div className="absolute w-16 h-16 rounded-full bg-accent/40 blur-xl" />
+        <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-accent/60 via-accent/30 to-accent/10 flex items-center justify-center border-4 border-white shadow-lg shadow-accent/30">
           <span className="material-symbols-outlined text-[20px] text-primary">
             arrow_downward
           </span>
@@ -157,11 +175,11 @@ export function QuickBuyWidget() {
 
       <button
         type="button"
-        onClick={() => setStep("wallet")}
+        onClick={handleBuyClick}
         disabled={numericAmount <= 0}
         className="accent-button disabled:opacity-40 disabled:cursor-not-allowed w-full mt-4 py-4 rounded-full text-primary font-extrabold text-lg flex items-center justify-center gap-2"
       >
-        Continue
+        Buy
         <span className="material-symbols-outlined text-[20px]">
           arrow_forward
         </span>
