@@ -19,11 +19,18 @@ function SpyMark() {
 
 function NvidiaMark() {
   return (
-    <svg viewBox="0 0 24 24" className="w-[55%] h-[55%]" fill="none">
-      <path
-        d="M6 8c0-1.1.9-2 2-2h2c4.4 0 8 3.6 8 8v2c0 1.1-.9 2-2 2h-2c0-4.4-3.6-8-8-8V8z"
+    <svg viewBox="0 0 24 24" className="w-[58%] h-[58%]" fill="none">
+      <text
+        x="12"
+        y="17"
+        textAnchor="middle"
+        fontSize="15"
+        fontWeight="800"
         fill="#76B900"
-      />
+        fontFamily="var(--font-sans, sans-serif)"
+      >
+        N
+      </text>
     </svg>
   );
 }
