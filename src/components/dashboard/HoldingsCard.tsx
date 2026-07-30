@@ -1,10 +1,6 @@
 import type { Holding } from "@/lib/buckets";
 import { isHoldingVerified } from "@/lib/buckets";
-
-function badgeText(h: Holding): string {
-  const base = h.tokenSymbol || h.displayName;
-  return base.length <= 6 ? base.toUpperCase() : base.slice(0, 4).toUpperCase();
-}
+import { StockBadge } from "@/components/StockBadge";
 
 export function HoldingsCard({ holdings }: { holdings: Holding[] }) {
   return (
@@ -22,9 +18,7 @@ export function HoldingsCard({ holdings }: { holdings: Holding[] }) {
             className="flex items-center justify-between pb-4 border-b border-outline-variant/50"
           >
             <div className="flex items-center gap-4 min-w-0">
-              <div className="w-10 h-10 shrink-0 rounded-xl bg-surface-variant flex items-center justify-center font-bold text-[10px] text-on-surface">
-                {badgeText(h)}
-              </div>
+              <StockBadge holding={h} className="w-10 h-10" />
               <div className="min-w-0">
                 <p className="font-bold truncate">{h.displayName}</p>
                 <p className="text-label-sm text-on-surface-variant">
