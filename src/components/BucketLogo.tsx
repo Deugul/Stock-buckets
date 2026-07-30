@@ -68,7 +68,6 @@ const logoBySlug: Record<
   { Mark: () => React.ReactElement; bgClass: string }
 > = {
   "us-market-leaders": { Mark: SpyMark, bgClass: "bg-[#1B3A6B]" },
-  "magnificent-technology": { Mark: NvidiaMark, bgClass: "bg-black" },
   "ai-and-semiconductors": { Mark: NvidiaMark, bgClass: "bg-black" },
   "digital-finance": { Mark: VisaMark, bgClass: "bg-[#1A1F71]" },
   "global-innovation-and-industry": { Mark: TeslaMark, bgClass: "bg-black" },
