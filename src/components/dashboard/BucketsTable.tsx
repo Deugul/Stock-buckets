@@ -2,6 +2,7 @@ import Link from "next/link";
 import { buckets } from "@/lib/buckets";
 import { bucketDisplay } from "@/lib/bucketDisplay";
 import { riskLabel, riskBadgeClass } from "@/lib/bucketRisk";
+import { BucketLogo } from "@/components/BucketLogo";
 
 export function BucketsTable() {
   return (
@@ -38,13 +39,7 @@ export function BucketsTable() {
               >
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-4">
-                    <div
-                      className={`w-10 h-10 rounded-lg flex items-center justify-center ${meta.iconClass}`}
-                    >
-                      <span className="material-symbols-outlined">
-                        {meta.icon}
-                      </span>
-                    </div>
+                    <BucketLogo slug={bucket.slug} className="w-10 h-10" />
                     <div>
                       <p className="font-bold text-on-surface flex items-center gap-2">
                         {bucket.name}

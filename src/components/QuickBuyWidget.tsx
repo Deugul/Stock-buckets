@@ -6,6 +6,7 @@ import { bucketDisplay } from "@/lib/bucketDisplay";
 import { HoldingsTicker } from "@/components/HoldingsTicker";
 import { WalletConnectFlow } from "@/components/WalletConnectFlow";
 import { UsdcIcon } from "@/components/UsdcIcon";
+import { BucketLogo } from "@/components/BucketLogo";
 import { useWallet } from "@/lib/wallet-context";
 
 const MOCK_USDC_BALANCE = 4820.75;
@@ -34,7 +35,6 @@ export function QuickBuyWidget() {
       <div className="relative w-full max-w-md mx-auto glass-card rounded-[2rem] p-4 shadow-2xl border-white/50">
         <WalletConnectFlow
           bucket={selectedBucket}
-          meta={selectedMeta}
           amount={numericAmount}
           estimatedUnits={estimatedUnits}
           onBack={() => setCheckoutStarted(false)}
@@ -97,11 +97,7 @@ export function QuickBuyWidget() {
           className="w-full flex items-center justify-between gap-3 bg-white border border-outline-variant hover:bg-surface-container-low transition-colors rounded-full pl-2 pr-4 py-2"
         >
           <span className="flex items-center gap-2">
-            <span className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
-              <span className="material-symbols-outlined text-[18px] text-white">
-                {selectedMeta.icon}
-              </span>
-            </span>
+            <BucketLogo slug={selectedBucket.slug} className="w-8 h-8" />
             <span className="font-bold text-on-surface">
               {selectedBucket.name}
             </span>
@@ -139,13 +135,7 @@ export function QuickBuyWidget() {
                         bucket.slug === selectedSlug ? "bg-surface" : ""
                       }`}
                     >
-                      <span
-                        className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${meta.iconClass}`}
-                      >
-                        <span className="material-symbols-outlined text-[18px]">
-                          {meta.icon}
-                        </span>
-                      </span>
+                      <BucketLogo slug={bucket.slug} className="w-8 h-8" />
                       <span className="flex-1 min-w-0">
                         <span className="block font-bold text-sm text-on-surface truncate">
                           {bucket.name}

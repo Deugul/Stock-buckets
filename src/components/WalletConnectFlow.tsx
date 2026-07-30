@@ -2,18 +2,16 @@
 
 import type { Bucket } from "@/lib/buckets";
 import { isBucketFullyVerified } from "@/lib/buckets";
-import type { BucketDisplay } from "@/lib/bucketDisplay";
 import { useWallet } from "@/lib/wallet-context";
+import { BucketLogo } from "@/components/BucketLogo";
 
 export function WalletConnectFlow({
   bucket,
-  meta,
   amount,
   estimatedUnits,
   onBack,
 }: {
   bucket: Bucket;
-  meta: BucketDisplay;
   amount: number;
   estimatedUnits: number;
   onBack: () => void;
@@ -39,13 +37,7 @@ export function WalletConnectFlow({
 
       <div className="space-y-5">
         <div className="flex items-center gap-3 p-3 bg-surface rounded-xl">
-          <span
-            className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${meta.iconClass}`}
-          >
-            <span className="material-symbols-outlined text-[18px]">
-              {meta.icon}
-            </span>
-          </span>
+          <BucketLogo slug={bucket.slug} className="w-9 h-9" />
           <div>
             <p className="font-bold text-on-surface text-sm">
               {bucket.name}

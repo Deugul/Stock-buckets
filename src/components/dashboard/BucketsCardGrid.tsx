@@ -2,6 +2,7 @@ import Link from "next/link";
 import { buckets } from "@/lib/buckets";
 import { bucketDisplay } from "@/lib/bucketDisplay";
 import { riskLabel, riskBadgeClass } from "@/lib/bucketRisk";
+import { BucketLogo } from "@/components/BucketLogo";
 
 export function BucketsCardGrid() {
   return (
@@ -15,13 +16,7 @@ export function BucketsCardGrid() {
             className="bg-white rounded-xl border border-outline-variant p-5 flex flex-col gap-4 hover:shadow-md transition-shadow"
           >
             <div className="flex items-start justify-between">
-              <div
-                className={`w-10 h-10 rounded-lg flex items-center justify-center ${meta.iconClass}`}
-              >
-                <span className="material-symbols-outlined">
-                  {meta.icon}
-                </span>
-              </div>
+              <BucketLogo slug={bucket.slug} className="w-10 h-10" />
               <span
                 className={`px-3 py-1 text-xs font-bold rounded-full ${riskBadgeClass[risk] ?? riskBadgeClass.Unrated}`}
               >
