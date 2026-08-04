@@ -101,7 +101,7 @@
   }
 
   .accent-button {
-    background: #71d877;
+    background: linear-gradient(90deg, #71d877 0%, #e3fa7c 100%);
     box-shadow: 0 8px 32px -8px rgba(113, 216, 119, 0.5);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }

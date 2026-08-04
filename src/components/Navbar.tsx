@@ -58,9 +58,9 @@ export function Navbar() {
               }
               aria-haspopup="menu"
               aria-expanded={wallet.dropdownOpen}
-              className="bg-white border border-outline-variant px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm sm:text-body-md font-bold flex items-center gap-2 hover:bg-surface transition-all"
+              className="accent-button text-primary px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-sm sm:text-body-md font-bold flex items-center gap-2"
             >
-              <span className="w-2.5 h-2.5 bg-accent rounded-full animate-pulse" />
+              <span className="w-2.5 h-2.5 bg-white rounded-full animate-pulse" />
               {wallet.connected ? (
                 <span>{wallet.walletName}</span>
               ) : (
