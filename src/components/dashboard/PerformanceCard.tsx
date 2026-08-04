@@ -40,8 +40,8 @@ export function PerformanceCard({ chartPath }: { chartPath: string }) {
         >
           <defs>
             <linearGradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stopColor="#34d399" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#34d399" stopOpacity="0" />
+              <stop offset="0%" stopColor="#71d877" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#71d877" stopOpacity="0" />
             </linearGradient>
           </defs>
           <path d={areaPath} fill="url(#areaGradient)" />

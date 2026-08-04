@@ -15,8 +15,8 @@
   --color-primary: #0b1c30;
   --color-on-surface: #0b1c30;
   --color-on-surface-variant: #45464d;
-  --color-accent: #34d399;
-  --color-lime-accent: #34d399;
+  --color-accent: #71d877;
+  --color-lime-accent: #71d877;
   --color-outline-variant: #c6c6cd;
   --color-error: #ba1a1a;
   --color-secondary-container: #86f2e4;
@@ -95,19 +95,19 @@
   .hero-gradient {
     background: radial-gradient(
       circle at 70% 30%,
-      rgba(52, 211, 153, 0.18) 0%,
+      rgba(113, 216, 119, 0.18) 0%,
       rgba(255, 255, 255, 0) 50%
     );
   }
 
   .accent-button {
-    background: #34d399;
-    box-shadow: 0 8px 32px -8px rgba(52, 211, 153, 0.5);
+    background: #71d877;
+    box-shadow: 0 8px 32px -8px rgba(113, 216, 119, 0.5);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .accent-button:hover {
-    box-shadow: 0 12px 40px -4px rgba(52, 211, 153, 0.6);
+    box-shadow: 0 12px 40px -4px rgba(113, 216, 119, 0.6);
     transform: translateY(-2px);
   }
 }

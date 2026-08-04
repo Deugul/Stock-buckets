@@ -19,7 +19,7 @@ export async function generateMetadata({
   const { bucket: slug } = await params;
   const bucket = getBucket(slug);
   if (!bucket) return {};
-  return { title: `${bucket.name} | Buckets Investment Group` };
+  return { title: `${bucket.name} | ICM.FUN Investment Group` };
 }
 
 function rebalanceCadence(indexRules: string | null): string {

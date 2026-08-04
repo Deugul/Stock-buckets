@@ -3,9 +3,9 @@ import { Navbar } from "@/components/Navbar";
 import { QuickBuyWidget } from "@/components/QuickBuyWidget";
 
 export const metadata: Metadata = {
-  title: "Buckets | Buy the basket. Own the category.",
+  title: "ICM.FUN | Buy the basket. Own the category.",
   description:
-    "Buckets lets you invest in curated baskets of top stocks and trending themes across the market. Simple. Smart. Diversified.",
+    "ICM.FUN lets you invest in curated baskets of top stocks and trending themes across the market. Simple. Smart. Diversified.",
 };
 
 export default function Home() {

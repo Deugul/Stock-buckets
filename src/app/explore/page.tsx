@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { BucketsExplorer } from "@/components/dashboard/BucketsExplorer";
 
 export const metadata: Metadata = {
-  title: "Explore | Buckets Dashboard",
+  title: "Explore | ICM.FUN Dashboard",
 };
 
 export default function ExplorePage() {

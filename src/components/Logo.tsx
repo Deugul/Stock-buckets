@@ -11,13 +11,13 @@ export function Logo({
   const content = (
     <>
       <Image
-        src="/logo-dark.png"
-        alt="Buckets"
+        src="/icm-logo.png"
+        alt="ICM.FUN"
         width={32}
         height={32}
         className="w-8 h-8 object-contain"
       />
-      <span className={textClassName}>Buckets</span>
+      <span className={textClassName}>ICM.FUN</span>
     </>
   );
 
