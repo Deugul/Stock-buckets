@@ -1,10 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Logo } from "@/components/Logo";
 import { useWallet } from "@/lib/wallet-context";
-
-const navLinks = ["How it works", "Benefits", "About", "FAQ"];
 
 const wallets = [
   { name: "Phantom", className: "bg-[#AB9FF2] text-white" },
@@ -13,7 +11,6 @@ const wallets = [
 ];
 
 export function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const wallet = useWallet();
   const { dropdownOpen, closeDropdown } = wallet;
   const walletMenuRef = useRef<HTMLDivElement>(null);
@@ -39,13 +36,6 @@ export function Navbar() {
       <nav className="flex justify-between items-center h-16 sm:h-20 px-4 sm:px-6 lg:px-8 max-w-container-max mx-auto">
         <div className="flex items-center gap-12">
           <Logo href="/" />
-          <div className="hidden lg:flex items-center gap-8 text-body-md">
-            {navLinks.map((link) => (
-              <a key={link} className="nav-link" href="#">
-                {link}
-              </a>
-            ))}
-          </div>
         </div>
         <div className="flex items-center gap-2 sm:gap-4">
           <div className="relative" ref={walletMenuRef}>
@@ -113,34 +103,9 @@ export function Navbar() {
                 </div>
             )}
           </div>
-          <button
-            type="button"
-            onClick={() => setMobileOpen((v) => !v)}
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen}
-            className="lg:hidden p-2 -mr-2"
-          >
-            <span className="material-symbols-outlined">
-              {mobileOpen ? "close" : "menu"}
-            </span>
-          </button>
         </div>
       </nav>
 
-      {mobileOpen && (
-        <div className="lg:hidden border-t border-outline-variant bg-white px-4 py-4 flex flex-col gap-1">
-          {navLinks.map((link) => (
-            <a
-              key={link}
-              href="#"
-              onClick={() => setMobileOpen(false)}
-              className="nav-link px-2 py-3 rounded-lg hover:bg-surface"
-            >
-              {link}
-            </a>
-          ))}
-        </div>
-      )}
     </header>
   );
 }
