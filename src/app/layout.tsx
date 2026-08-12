@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { WalletProvider } from "@/lib/wallet-context";
 import "./globals.css";
 
@@ -16,6 +17,13 @@ const jetBrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const materialSymbols = localFont({
+  src: "./fonts/material-symbols-outlined.woff2",
+  variable: "--font-material-symbols",
+  display: "block",
+  preload: true,
+});
+
 export const metadata: Metadata = {
   title: "ICM.FUN | Buy the basket. Own the category.",
   description:
@@ -30,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${hankenGrotesk.variable} ${jetBrainsMono.variable} scroll-smooth h-full antialiased`}
+      className={`${hankenGrotesk.variable} ${jetBrainsMono.variable} ${materialSymbols.variable} scroll-smooth h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-on-surface overflow-x-hidden">
         <WalletProvider>{children}</WalletProvider>
